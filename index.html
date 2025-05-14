@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
-      background-color: #000;
+      background: radial-gradient(circle at top, #0a0a0a 0%, #000 60%);
       color: #fff;
       font-family: 'Playfair Display', serif;
       line-height: 1.8;
@@ -36,13 +36,28 @@
     .section h1 {
       color: #c0a063;
       font-size: 3rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       text-shadow: 0 0 8px #c0a063;
       animation: glow 3s ease-in-out infinite alternate;
     }
-    .section p {
-      font-size: 1.1rem;
-      color: #ddd;
+    .subheadline {
+      font-size: 1.3rem;
+      color: #aaa;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      font-style: italic;
+    }
+    .divider {
+      height: 2px;
+      width: 60px;
+      margin: 1.5rem auto 2rem;
+      background: linear-gradient(to right, #c0a063, #fff0, #c0a063);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.2s ease-out forwards;
     }
     @keyframes glow {
       from {
@@ -50,6 +65,12 @@
       }
       to {
         text-shadow: 0 0 18px #c0a063, 0 0 24px #c0a063;
+      }
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
     footer {
@@ -69,9 +90,11 @@
     <a href="contact.html">Contact</a>
   </nav>
   <div class="section">
-    <h1>LSD Graphic Design</h1>
-    <p>I’m Logan Dillon, a visual branding specialist creating logos and identities that stand out — clean, sharp, and memorable. Whether you need a startup identity or a rebrand, this is the place to bring your vision to life.</p>
-    <p>Explore the sections above to learn more about what I do, see my past work, and get in touch.</p>
+    <h1 class="fade-in">LSD Graphic Design</h1>
+    <p class="subheadline fade-in">Visual identity. Built fast. Made to last.</p>
+    <div class="divider"></div>
+    <p class="fade-in">I’m Logan Dillon, a visual branding specialist creating logos and identities that stand out — clean, sharp, and memorable. Whether you need a startup identity or a rebrand, this is the place to bring your vision to life.</p>
+    <p class="fade-in">Explore the sections above to learn more about what I do, see my past work, and get in touch.</p>
   </div>
   <footer>
     &copy; 2025 LSD Graphic Design
