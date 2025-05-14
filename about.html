@@ -15,12 +15,12 @@
     }
     .logo-wrap {
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     .logo {
-      height: 60px;
+      height: 100px;
       width: auto;
-      filter: drop-shadow(0 0 5px #c0a063);
+      filter: drop-shadow(0 0 8px #c0a063);
     }
     nav {
       text-align: center;
@@ -40,18 +40,47 @@
       max-width: 800px;
       margin: auto;
       padding: 3rem 1rem;
+      text-align: center;
     }
-    .section h1, .section h2 {
+    .pulse {
+      display: inline-block;
+      animation: pulse-glow 4s infinite ease-in-out;
       color: #c0a063;
+      font-size: 2.4rem;
+      font-weight: bold;
       margin-bottom: 1rem;
+      text-shadow: 0 0 10px #c0a063, 0 0 20px #c0a063;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.2s ease-out forwards;
     }
     .section p {
       font-size: 1.1rem;
       color: #ddd;
+      margin-bottom: 1.2rem;
     }
     .highlight {
       color: #c0a063;
       font-weight: bold;
+    }
+    @keyframes pulse-glow {
+      0% {
+        text-shadow: 0 0 6px #c0a063;
+      }
+      50% {
+        text-shadow: 0 0 16px #c0a063, 0 0 32px #c0a063;
+      }
+      100% {
+        text-shadow: 0 0 6px #c0a063;
+      }
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     footer {
       text-align: center;
@@ -75,14 +104,15 @@
     <a href="contact.html">Contact</a>
   </nav>
   <div class="section">
-    <h2>About</h2>
-    <p>Hey, I’m <span class="highlight">Logan</span> — the designer behind LSD Graphic Design. This isn’t just a side hustle or a hobby. This is passion-meets-professionalism, built on fast turnarounds, clean visuals, and real communication.</p>
-    <p>I started LSD Graphic Design to give brands the kind of logos and visual identity they deserve — creative, memorable, and built to scale. I’ve worked with small business owners, social media creators, and entrepreneurs who want more than a cookie-cutter logo.</p>
-    <p>My style leans modern, minimal, and bold. But it’s not about me — it’s about making your brand feel like <span class="highlight">you</span>. If you want something that reflects your vision, works across platforms, and actually feels custom — you’re in the right place.</p>
-    <p>I respond fast, revise fast, and design even faster. If you’ve got an idea — I can bring it to life.</p>
+    <div class="pulse fade-in">About</div>
+    <p class="fade-in">Hey, I’m <span class="highlight">Logan</span> — the designer behind LSD Graphic Design. This isn’t just a side hustle or a hobby. This is passion-meets-professionalism, built on fast turnarounds, clean visuals, and real communication.</p>
+    <p class="fade-in">I started LSD Graphic Design to give brands the kind of logos and visual identity they deserve — creative, memorable, and built to scale. I’ve worked with small business owners, social media creators, and entrepreneurs who want more than a cookie-cutter logo.</p>
+    <p class="fade-in">My style leans modern, minimal, and bold. But it’s not about me — it’s about making your brand feel like <span class="highlight">you</span>. If you want something that reflects your vision, works across platforms, and actually feels custom — you’re in the right place.</p>
+    <p class="fade-in">I respond fast, revise fast, and design even faster. If you’ve got an idea — I can bring it to life.</p>
   </div>
   <footer>
-    &copy; 2025 LSD Graphic Design
+    &copy; 2025 LSD Graphic Design 
   </footer>
 </body>
 </html>
+
