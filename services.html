@@ -15,12 +15,12 @@
     }
     .logo-wrap {
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     .logo {
-      height: 60px;
+      height: 100px;
       width: auto;
-      filter: drop-shadow(0 0 5px #c0a063);
+      filter: drop-shadow(0 0 8px #c0a063);
     }
     nav {
       text-align: center;
@@ -40,11 +40,21 @@
       max-width: 1000px;
       margin: auto;
       padding: 3rem 1rem;
-    }
-    .section h2 {
-      color: #c0a063;
-      margin-bottom: 2rem;
       text-align: center;
+    }
+    .pulse {
+      display: inline-block;
+      animation: pulse-glow 4s infinite ease-in-out;
+      color: #c0a063;
+      font-size: 2.4rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px #c0a063, 0 0 20px #c0a063;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.2s ease-out forwards;
     }
     .services-grid {
       display: grid;
@@ -71,6 +81,23 @@
       font-size: 1rem;
       line-height: 1.6;
     }
+    @keyframes pulse-glow {
+      0% {
+        text-shadow: 0 0 6px #c0a063;
+      }
+      50% {
+        text-shadow: 0 0 16px #c0a063, 0 0 32px #c0a063;
+      }
+      100% {
+        text-shadow: 0 0 6px #c0a063;
+      }
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
     footer {
       text-align: center;
       margin-top: 4rem;
@@ -93,8 +120,8 @@
     <a href="contact.html">Contact</a>
   </nav>
   <div class="section">
-    <h2>Services</h2>
-    <div class="services-grid">
+    <div class="pulse fade-in">Services</div>
+    <div class="services-grid fade-in">
       <div class="service">
         <h3>Logo Design</h3>
         <p>Crafted from scratch with personality, balance, and lasting impact. I don’t do templates — I build identities.</p>
