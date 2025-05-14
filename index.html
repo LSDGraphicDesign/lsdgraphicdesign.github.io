@@ -31,14 +31,26 @@
       max-width: 800px;
       margin: auto;
       padding: 3rem 1rem;
+      text-align: center;
     }
-    .section h1, .section h2 {
+    .section h1 {
       color: #c0a063;
+      font-size: 3rem;
       margin-bottom: 1rem;
+      text-shadow: 0 0 8px #c0a063;
+      animation: glow 3s ease-in-out infinite alternate;
     }
     .section p {
       font-size: 1.1rem;
       color: #ddd;
+    }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 8px #c0a063;
+      }
+      to {
+        text-shadow: 0 0 18px #c0a063, 0 0 24px #c0a063;
+      }
     }
     footer {
       text-align: center;
@@ -57,7 +69,7 @@
     <a href="contact.html">Contact</a>
   </nav>
   <div class="section">
-    <h1>Welcome to LSD Graphic Design</h1>
+    <h1>LSD Graphic Design</h1>
     <p>I’m Logan Dillon, a visual branding specialist creating logos and identities that stand out — clean, sharp, and memorable. Whether you need a startup identity or a rebrand, this is the place to bring your vision to life.</p>
     <p>Explore the sections above to learn more about what I do, see my past work, and get in touch.</p>
   </div>
