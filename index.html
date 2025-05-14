@@ -173,16 +173,48 @@ a:hover {
     html {
   scroll-behavior: smooth;
 }
+    .services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.service {
+  border: 1px solid #222;
+  background: linear-gradient(145deg, #0a0a0a, #111);
+  padding: 2rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 4px 20px rgba(192, 160, 99, 0.2);
+}
+
+.service h3 {
+  color: #c0a063;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.service p {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.6;
+}
   </style>
 </head>
 <body>
   <header>
    <h1><span class="pulse">LSD Graphic Design</span></h1>
     <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
   </header>
 
   <section id="about" class="section">
@@ -226,6 +258,36 @@ a:hover {
       </div>
     </div>
   </section>
+  
+<section id="services" class="section">
+  <h2>Services</h2>
+  <div class="services-grid">
+    <div class="service">
+      <h3>Logo Design</h3>
+      <p>Custom logos built from scratch to match your brand's identity, with clean lines and creative edge.</p>
+    </div>
+    <div class="service">
+      <h3>Brand Identity</h3>
+      <p>Fonts, color palettes, and graphics to define your full visual identity across all platforms.</p>
+    </div>
+    <div class="service">
+      <h3>Business Cards</h3>
+      <p>Designs that are print-ready, sharp, and leave a lasting impression — digitally or physically.</p>
+    </div>
+    <div class="service">
+      <h3>Social Media Graphics</h3>
+      <p>Instagram posts, story highlights, headers, and profile visuals crafted for scroll-stopping impact.</p>
+    </div>
+    <div class="service">
+      <h3>Fast Turnaround</h3>
+      <p>I work fast, respond quickly, and make revisions same-day whenever possible. You won’t be waiting.</p>
+    </div>
+    <div class="service">
+      <h3>Client Collaboration</h3>
+      <p>Clear communication from start to finish. You’re always in the loop, every step of the way.</p>
+    </div>
+  </div>
+</section>
 
   <section id="contact" class="section">
     <h2>Contact</h2>
