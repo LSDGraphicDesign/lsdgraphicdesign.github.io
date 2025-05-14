@@ -2,21 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | LSD Graphic Design</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    body { background-color: #000; color: #fff; font-family: 'Playfair Display', serif; line-height: 1.8; padding: 2rem; }
-    nav { text-align: center; margin-bottom: 2rem; }
-    nav a { margin: 0 1.2rem; text-decoration: none; color: #fff; font-weight: 600; }
-    nav a:hover { color: #c0a063; }
-    h1, h2 { color: #c0a063; }
-    .section { max-width: 800px; margin: auto; padding: 3rem 1rem; }
-    footer { text-align: center; margin-top: 4rem; font-size: 0.9rem; color: #aaa; }
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.8;
+      padding: 2rem;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    nav a {
+      margin: 0 1.2rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #c0a063;
+    }
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3rem 1rem;
+    }
+    .section h2 {
+      color: #c0a063;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service {
+      background: linear-gradient(145deg, #0a0a0a, #111);
+      padding: 2rem;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #222;
+    }
+    .service:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 20px rgba(192, 160, 99, 0.2);
+    }
+    .service h3 {
+      color: #c0a063;
+      margin-bottom: 1rem;
+    }
+    .service p {
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
-  
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -24,24 +78,37 @@
     <a href="projects.html">Projects</a>
     <a href="contact.html">Contact</a>
   </nav>
-
   <div class="section">
-    
-      <h2>Services</h2>
-      <ul>
-        <li>Logo Design</li>
-        <li>Brand Identity</li>
-        <li>Business Cards</li>
-        <li>Social Media Graphics</li>
-        <li>Fast Turnaround</li>
-        <li>Client Collaboration</li>
-      </ul>
-    
+    <h2>Services</h2>
+    <div class="services-grid">
+      <div class="service">
+        <h3>Logo Design</h3>
+        <p>Crafted from scratch with personality, balance, and lasting impact. I don’t do templates — I build identities.</p>
+      </div>
+      <div class="service">
+        <h3>Brand Identity</h3>
+        <p>Color palettes, font systems, and style guides that unify your brand across every platform.</p>
+      </div>
+      <div class="service">
+        <h3>Business Cards</h3>
+        <p>Whether print or digital, your card should make a statement. High-res, bold, and built to impress.</p>
+      </div>
+      <div class="service">
+        <h3>Social Media Graphics</h3>
+        <p>Headers, icons, posts, and more — designed to elevate your feed and match your vibe.</p>
+      </div>
+      <div class="service">
+        <h3>Fast Turnaround</h3>
+        <p>I move quickly without cutting corners. Need something by tomorrow? Let’s make it happen.</p>
+      </div>
+      <div class="service">
+        <h3>Client Collaboration</h3>
+        <p>It’s your brand — I’m just here to help shape it. Communication is clear, honest, and efficient.</p>
+      </div>
+    </div>
   </div>
-  
   <footer>
-    &copy; 2025 LSD Graphic Design — built by Logan Dillon with premium vibes and clean code.
+    &copy; 2025 LSD Graphic Design
   </footer>
-
 </body>
 </html>
