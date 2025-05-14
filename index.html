@@ -13,6 +13,15 @@
       line-height: 1.8;
       padding: 2rem;
     }
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .logo {
+      height: 60px;
+      width: auto;
+      filter: drop-shadow(0 0 5px #c0a063);
+    }
     nav {
       text-align: center;
       margin-bottom: 2rem;
@@ -72,14 +81,6 @@
         text-shadow: 0 0 6px #c0a063;
       }
     }
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 8px #c0a063;
-      }
-      to {
-        text-shadow: 0 0 18px #c0a063, 0 0 24px #c0a063;
-      }
-    }
     @keyframes fadeInUp {
       to {
         opacity: 1;
@@ -95,6 +96,11 @@
   </style>
 </head>
 <body>
+  <div class="logo-wrap">
+    <a href="index.html">
+      <img src="logo.png" alt="LSD Graphic Design logo" class="logo" />
+    </a>
+  </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -107,7 +113,7 @@
     <p class="subheadline fade-in">Visual identity. Built fast. Made to last.</p>
     <div class="divider"></div>
     <p class="fade-in">I’m Logan, a visual branding specialist creating logos and identities that stand out — clean, sharp, and memorable. Whether you need a startup identity or a rebrand, this is the place to bring your vision to life.</p>
-    <p class="fade-in">Explore the sections above to learn more about what I do, see my past work, or get in touch.</p>
+    <p class="fade-in">Explore the sections above to learn more about what I do, see my past work, and get in touch.</p>
   </div>
   <footer>
     &copy; 2025 LSD Graphic Design
