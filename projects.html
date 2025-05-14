@@ -2,21 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | LSD Graphic Design</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    body { background-color: #000; color: #fff; font-family: 'Playfair Display', serif; line-height: 1.8; padding: 2rem; }
-    nav { text-align: center; margin-bottom: 2rem; }
-    nav a { margin: 0 1.2rem; text-decoration: none; color: #fff; font-weight: 600; }
-    nav a:hover { color: #c0a063; }
-    h1, h2 { color: #c0a063; }
-    .section { max-width: 800px; margin: auto; padding: 3rem 1rem; }
-    footer { text-align: center; margin-top: 4rem; font-size: 0.9rem; color: #aaa; }
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.8;
+      padding: 2rem;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    nav a {
+      margin: 0 1.2rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #c0a063;
+    }
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3rem 1rem;
+    }
+    .section h2 {
+      color: #c0a063;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .project {
+      background: linear-gradient(145deg, #0a0a0a, #111);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #222;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+    .project:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 20px rgba(192, 160, 99, 0.2);
+    }
+    .project img {
+      max-width: 100%;
+      height: 160px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+    .project h3 {
+      color: #c0a063;
+      margin-bottom: 0.5rem;
+    }
+    .project p {
+      color: #ccc;
+      font-size: 1rem;
+    }
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
-  
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -24,14 +84,43 @@
     <a href="projects.html">Projects</a>
     <a href="contact.html">Contact</a>
   </nav>
-
   <div class="section">
-    <h2>Projects</h2><p>Here’s where I showcase logos I’ve designed — clean, modern, and brand-aligned.</p>
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project">
+        <img src="te-group.png" alt="TE Group logo" />
+        <h3>TE Group</h3>
+        <p>Modern, minimal, and built to communicate clarity for a professional agency.</p>
+      </div>
+      <div class="project">
+        <img src="urban-heights.png" alt="Urban Heights logo" />
+        <h3>Urban Heights</h3>
+        <p>Luxury real estate branding focused on elegance and upscale energy.</p>
+      </div>
+      <div class="project">
+        <img src="iron-castle.png" alt="Iron Castle logo" />
+        <h3>Iron Castle</h3>
+        <p>Strength and symmetry — this concept blends timeless structure with bold type.</p>
+      </div>
+      <div class="project">
+        <img src="eleventh-street.png" alt="Eleventh Street logo" />
+        <h3>Eleventh Street</h3>
+        <p>Edgy and urban with sharp lines made for streetwear and identity design.</p>
+      </div>
+      <div class="project">
+        <img src="litelinx.png" alt="LiteLinx logo" />
+        <h3>LiteLinx</h3>
+        <p>Futuristic and clean — a tech-driven identity for innovation and digital presence.</p>
+      </div>
+      <div class="project">
+        <img src="pdk-attorney.png" alt="PDK Attorney at Law logo" />
+        <h3>PDK Attorney at Law</h3>
+        <p>Classic serif design meets modern geometry for a sharp legal brand mark.</p>
+      </div>
+    </div>
   </div>
-  
   <footer>
-    &copy; 2025 LSD Graphic Design — built by Logan Dillon with premium vibes and clean code.
+    &copy; 2025 LSD Graphic Design
   </footer>
-
 </body>
 </html>
