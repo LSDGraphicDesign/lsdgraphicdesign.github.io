@@ -78,9 +78,32 @@ body {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.2rem;
     }
+nav a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 2px;
+  width: 100%;
+  background-color: #c0a063;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
 nav a:hover {
-  color: #00f9ff;
-  text-shadow: 0 0 6px #00f9ff;
+  color: #c0a063;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
 }
 
 .section h2 {
