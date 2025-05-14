@@ -15,22 +15,45 @@
   font-size: 1.15rem;
   line-height: 1.8;
 }
-    .pulse {
+   .pulse {
   display: inline-block;
-  animation: pulse-glow 3s infinite ease-in-out;
+  animation: pulse-glow 4s infinite ease-in-out;
   color: #00f9ff;
-  text-shadow: 0 0 10px #00f9ff, 0 0 20px #00f9ff, 0 0 40px #00f9ff;
+  text-shadow: 0 0 4px #00f9ff, 0 0 8px #00f9ff;
+}
+/* Section headings have a soft bottom border */
+.section h2 {
+  color: #00f9ff;
+  border-bottom: 2px solid #00f9ff;
+  padding-bottom: 0.5rem;
+  text-shadow: 0 0 5px #00f9ff;
 }
 
+/* Project cards get a faint border + hover effect */
+.project {
+  border: 1px solid #222;
+  background: linear-gradient(145deg, #0a0a0a, #111);
+}
+
+.project:hover {
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  transform: translateY(-6px);
+  box-shadow: 0 4px 25px rgba(0, 249, 255, 0.15);
+}
+
+/* Body gets a subtle gradient background */
+body {
+  background: radial-gradient(circle at top left, #000 60%, #0c0c0c);
+}
 @keyframes pulse-glow {
   0% {
-    text-shadow: 0 0 5px #00f9ff, 0 0 10px #00f9ff, 0 0 20px #00f9ff;
+    text-shadow: 0 0 2px #00f9ff, 0 0 5px #00f9ff;
   }
   50% {
-    text-shadow: 0 0 20px #00f9ff, 0 0 30px #00f9ff, 0 0 50px #00f9ff;
+    text-shadow: 0 0 8px #00f9ff, 0 0 16px #00f9ff;
   }
   100% {
-    text-shadow: 0 0 5px #00f9ff, 0 0 10px #00f9ff, 0 0 20px #00f9ff;
+    text-shadow: 0 0 2px #00f9ff, 0 0 5px #00f9ff;
   }
 }
     header {
