@@ -204,9 +204,30 @@ a:hover {
   font-size: 1rem;
   line-height: 1.6;
 }
+    .back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #c0a063;
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
   </style>
 </head>
 <body>
+  <body id="top">
   <header>
    <h1><span class="pulse">LSD Graphic Design</span></h1>
     <nav>
@@ -300,5 +321,6 @@ a:hover {
   <footer>
     &copy; 2025 LSD Graphic Design
   </footer>
+  <a href="#top" class="back-to-top">↑ Back to Top</a>
 </body>
 </html>
