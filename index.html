@@ -15,11 +15,23 @@
   font-size: 1.15rem;
   line-height: 1.8;
 }
-   .pulse {
+  .pulse {
   display: inline-block;
-  animation: pulse-glow 4s infinite ease-in-out;
-  color: #00f9ff;
-  text-shadow: 0 0 4px #00f9ff, 0 0 8px #00f9ff;
+  animation: pulse-gold 4s infinite ease-in-out;
+  color: #c0a063;
+  text-shadow: 0 0 3px #c0a063, 0 0 8px #c0a063;
+}
+
+@keyframes pulse-gold {
+  0% {
+    text-shadow: 0 0 1px #c0a063, 0 0 4px #c0a063;
+  }
+  50% {
+    text-shadow: 0 0 10px #c0a063, 0 0 20px #c0a063;
+  }
+  100% {
+    text-shadow: 0 0 1px #c0a063, 0 0 4px #c0a063;
+  }
 }
 /* Section headings have a soft bottom border */
 .section h2 {
@@ -44,17 +56,6 @@
 /* Body gets a subtle gradient background */
 body {
   background: radial-gradient(circle at top left, #000 60%, #0c0c0c);
-}
-@keyframes pulse-glow {
-  0% {
-    text-shadow: 0 0 2px #00f9ff, 0 0 5px #00f9ff;
-  }
-  50% {
-    text-shadow: 0 0 8px #00f9ff, 0 0 16px #00f9ff;
-  }
-  100% {
-    text-shadow: 0 0 2px #00f9ff, 0 0 5px #00f9ff;
-  }
 }
     header {
       padding: 3rem;
