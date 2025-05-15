@@ -6,6 +6,42 @@
   <title>Projects | LSD Graphic Design</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    .sparkle-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #c0a063;
+  border-radius: 50%;
+  animation: sparkle-float 8s infinite;
+  opacity: 0.6;
+}
+
+@keyframes sparkle-float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-100vh) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200vh) scale(0.8);
+  }
+}
     a {
   position: relative;
   color: #fff;
