@@ -187,6 +187,7 @@ a:hover::after {
   </style>
 </head>
 <body>
+  <div class="sparkle-bg" id="sparkle-bg"></div>
   <div class="logo-wrap">
     <a href="index.html">
       <img src="logo.png" alt="LSD Graphic Design logo" class="logo" />
@@ -231,5 +232,18 @@ a:hover::after {
   <footer>
     &copy; 2025 LSD Graphic Design
   </footer>
+  <script>
+  const sparkleContainer = document.getElementById("sparkle-bg");
+
+  for (let i = 0; i < 60; i++) {
+    const dot = document.createElement("div");
+    dot.className = "sparkle";
+    dot.style.left = Math.random() * 100 + "vw";
+    dot.style.top = Math.random() * 100 + "vh";
+    dot.style.animationDelay = Math.random() * 8 + "s";
+    dot.style.width = dot.style.height = (Math.random() * 2 + 1) + "px";
+    sparkleContainer.appendChild(dot);
+  }
+</script>
 </body>
 </html>
