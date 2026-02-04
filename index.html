@@ -4,283 +4,235 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home | LSD Graphic Design</title>
+
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="shortcut icon" href="/favicon.ico">
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
-    .sparkle-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  background: transparent;
-  overflow: hidden;
-}
+    :root{
+      --gold:#c0a063;
+    }
 
-.sparkle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: #c0a063;
-  border-radius: 50%;
-  animation: sparkle-float 8s infinite;
-  opacity: 0.6;
-}
-
-@keyframes sparkle-float {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.9;
-    transform: translateY(-100vh) scale(1.5);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-200vh) scale(0.8);
-  }
-}
-    .divider-accent {
-  height: 2px;
-  width: 100px;
-  margin: 2rem auto;
-  background: linear-gradient(to right, #c0a063, transparent, #c0a063);
-  border-radius: 4px;
-}
-
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 6px #c0a063;
-  }
-  50% {
-    box-shadow: 0 0 14px #c0a063;
-  }
-}
-    a {
-  position: relative;
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  height: 2px;
-  width: 0;
-  background: #c0a063;
-  transition: width 0.3s ease;
-}
-
-a:hover {
-  color: #c0a063;
-  text-shadow: 0 0 6px #c0a063, 0 0 12px #c0a063;
-}
-
-a:hover::after {
-  width: 100%;
-}
-    
-.project-tile:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 12px #c0a063;
-  transition: all 0.3s ease;
-}
-    .section {
-  border: 1px solid #c0a063;
-  box-shadow: 0 0 15px #c0a06333;
-  padding: 3rem 2rem;
-  margin-bottom: 2rem;
-  border-radius: 10px;
-}
-    <hr class="gold-divider" />
-    .gold-divider {
-  border: none;
-  height: 2px;
-  width: 100px;
-  margin: 2rem auto;
-  background: linear-gradient(to right, #c0a063, #fff0, #c0a063);
-}
-    <div class="gold-circle"></div>
-    .gold-circle {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #c0a06355, transparent);
-  top: 100px;
-  left: 50px;
-  z-index: 0;
-}
-    @media (max-width: 600px) {
-  .logo {
-    height: 100px;
-  }
-}
-    body {
+    /* Base */
+    body{
       background: radial-gradient(circle at top, #0a0a0a 0%, #000 60%);
-      color: #fff;
-      font-family: 'Playfair Display', serif;
-      line-height: 1.8;
-      padding: 2rem;
+      color:#fff;
+      font-family:'Playfair Display', serif;
+      line-height:1.8;
+      padding: clamp(1rem, 3vw, 2rem);
+      margin:0;
     }
-    .logo-wrap {
-      text-align: center;
-      margin-bottom: 1rem;
+
+    /* Sparkle background */
+    .sparkle-bg{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      background:transparent;
+      overflow:hidden;
     }
-    .logo {
-      height: 230px;
-      width: auto;
-      filter: drop-shadow(0 0 5px #c0a063);
+
+    .sparkle{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:var(--gold);
+      border-radius:50%;
+      animation:sparkle-float 8s infinite;
+      opacity:0.6;
     }
-    nav {
-      text-align: center;
-      margin-bottom: 2rem;
+
+    @keyframes sparkle-float{
+      0%{ transform: translateY(0) scale(1); opacity:0.4; }
+      50%{ transform: translateY(-100vh) scale(1.5); opacity:0.9; }
+      100%{ transform: translateY(-200vh) scale(0.8); opacity:0; }
     }
-    nav a {
-      margin: 0 1.2rem;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s ease;
+
+    /* Logo */
+    .logo-wrap{
+      text-align:center;
+      margin: 1rem 0 0.75rem;
+      position:relative;
+      z-index:1;
     }
-    nav a:hover {
-  color: #c0a063;
-}
-    .section {
-      max-width: 800px;
-      margin: auto;
-      padding: 3rem 1rem;
-      text-align: center;
+
+    .logo{
+      height:230px;
+      width:auto;
+      filter: drop-shadow(0 0 5px var(--gold));
     }
-    .pulse {
-      display: inline-block;
-      color: #c0a063;
-      font-size: 3.2rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
+
+    @media (max-width:600px){
+      .logo{ height:100px; }
     }
-    .subheadline {
-      font-size: 1.3rem;
-      color: #aaa;
-      margin-top: -0.5rem;
-      margin-bottom: 2rem;
-      font-weight: 500;
-      font-style: italic;
+
+    /* Nav */
+    nav{
+      text-align:center;
+      margin-bottom:2rem;
+      position:relative;
+      z-index:1;
+      font-family:'Montserrat', sans-serif;
     }
-    .divider {
-      height: 2px;
-      width: 60px;
-      margin: 1.5rem auto 2rem;
-      background: linear-gradient(to right, #c0a063, #fff0, #c0a063);
+
+    nav a{
+      margin:0 1.2rem;
+      text-decoration:none;
+      color:#fff;
+      font-weight:600;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      position:relative;
     }
-    .fade-in {
-      opacity: 0;
+
+    /* Underline hover (nav + normal links) */
+    a:not(.cta)::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-2px;
+      height:2px;
+      width:0;
+      background:var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    a:not(.cta):hover{
+      color:var(--gold);
+      text-shadow: 0 0 6px var(--gold), 0 0 12px var(--gold);
+    }
+
+    a:not(.cta):hover::after{
+      width:100%;
+    }
+
+    /* Section layout */
+    .section{
+      max-width:900px;
+      margin: 0 auto 2rem;
+      padding: 3rem 2rem;
+      position:relative;
+      z-index:1;
+    }
+
+    /* Hero glass card */
+    .hero-card{
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 60px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      transform: translateX(-20px);
+      position:relative;
+    }
+
+    /* Soft glow behind the card (subtle) */
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle, rgba(192,160,99,0.14), transparent 60%);
+      z-index:-1;
+      filter: blur(10px);
+    }
+
+    /* Left alignment for hero */
+    .left-hero{
+      text-align:left;
+    }
+
+    /* Hero typography */
+    .pulse{
+      display:inline-block;
+      color:var(--gold);
+      font-size:3.2rem;
+      font-weight:700;
+      margin-bottom:0.5rem;
+    }
+
+    .subheadline{
+      font-size:1.3rem;
+      color:#aaa;
+      margin-top:-0.5rem;
+      margin-bottom:2rem;
+      font-weight:500;
+      font-style:italic;
+    }
+
+    .divider{
+      height:2px;
+      width:60px;
+      margin:1.5rem 0 2rem;
+      background: linear-gradient(to right, var(--gold), #fff0, var(--gold));
+    }
+
+    /* Fade-in */
+    .fade-in{
+      opacity:0;
       transform: translateY(20px);
       animation: fadeInUp 1.2s ease-out forwards;
+      animation-delay: var(--d, 0s);
     }
-    @keyframes pulse-glow {
-      0% {
-        text-shadow: 0 0 6px #c0a063;
-      }
-      50% {
-        text-shadow: 0 0 16px #c0a063, 0 0 32px #c0a063;
-      }
-      100% {
-        text-shadow: 0 0 6px #c0a063;
-      }
+
+    .delay-1{ --d:.10s; }
+    .delay-2{ --d:.20s; }
+    .delay-3{ --d:.30s; }
+    .delay-4{ --d:.40s; }
+    .delay-5{ --d:.50s; }
+
+    @keyframes fadeInUp{
+      to{ opacity:1; transform: translateY(0); }
     }
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    /* CTA button */
+    .cta{
+      display:inline-block;
+      margin-top:40px;
+      padding:14px 36px;
+      border-radius:999px;
+      background: linear-gradient(135deg, #d4af37, #f5e18a);
+      color:#000;
+      font-weight:600;
+      letter-spacing:0.08em;
+      text-decoration:none;
+      box-shadow: 0 12px 30px rgba(212,175,55,0.35);
+      transition: transform .2s ease, box-shadow .2s ease;
+      font-family:'Montserrat', sans-serif;
     }
-    :root {
-  --gold: #c0a063;
-}
 
-nav a:hover {
-  color: var(--gold);
-}
-
-h2, h3 {
-  color: var(--gold);
-}
-
-button,
-.cta-button {
-  background-color: var(--gold);
-  color: black;
-  font-weight: bold;
-  border-radius: 6px;
-  padding: 10px 20px;
-  border: none;
-}
-
-button:hover,
-.cta-button:hover {
-  background-color: #e6c200;
-}
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #aaa;
+    .cta:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 20px 45px rgba(212,175,55,0.5);
     }
-    .hero-card {
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(12px);
-  border-radius: 18px;
-  padding: 60px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-}
-.cta{
-  display:inline-block;
-  margin-top:40px;
-  padding:14px 36px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#d4af37,#f5e18a);
-  color:#000;
-  font-weight:600;
-  letter-spacing:0.08em;
-  text-decoration:none;
-  box-shadow:0 12px 30px rgba(212,175,55,0.35);
-  transition:transform .2s ease, box-shadow .2s ease;
-}
 
-.cta:hover{
-  transform:translateY(-3px);
-  box-shadow:0 20px 45px rgba(212,175,55,0.5);
-}
-    .left-hero{
-  text-align:left;
-}
-
-.left-hero .cta{
-  margin-left:0;
-}
-    .hero-card{
-  transform: translateX(-20px);
-}
+    /* Footer */
+    footer{
+      text-align:center;
+      margin-top:4rem;
+      font-size:0.9rem;
+      color:#aaa;
+      position:relative;
+      z-index:1;
+      font-family:'Montserrat', sans-serif;
+    }
   </style>
 </head>
+
 <body>
   <div class="sparkle-bg" id="sparkle-bg"></div>
+
   <div class="logo-wrap">
     <a href="index.html">
       <img src="logo.png" alt="LSD Graphic Design logo" class="logo" />
     </a>
   </div>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -288,29 +240,40 @@ button:hover,
     <a href="projects.html">Projects</a>
     <a href="contact.html">Contact</a>
   </nav>
+
   <div class="section hero-card left-hero">
-    <div class="pulse fade-in">LSD Graphic Design</div>
-    <p class="subheadline fade-in">Visual identity. Built fast. Made to last.</p>
+    <div class="pulse fade-in delay-1">LSD Graphic Design</div>
+    <p class="subheadline fade-in delay-2">Visual identity. Built fast. Made to last.</p>
     <div class="divider"></div>
-    <p class="fade-in">I’m Logan, a visual branding specialist creating logos and identities that stand out — clean, sharp, and memorable. Whether you need a startup identity or a rebrand, this is the place to bring your vision to life.</p>
-    <p class="fade-in">Explore the sections above to learn more about what I do, see my past work, or get in touch.</p>
-    <a href="projects.html" class="cta fade-in">View My Work</a>
+
+    <p class="fade-in delay-3">
+      I’m Logan, a visual branding specialist creating logos and identities that stand out — clean, sharp, and memorable.
+      Whether you need a startup identity or a rebrand, this is the place to bring your vision to life.
+    </p>
+
+    <p class="fade-in delay-4">
+      Explore the sections above to learn more about what I do, see my past work, or get in touch.
+    </p>
+
+    <a href="projects.html" class="cta fade-in delay-5">View My Work</a>
   </div>
+
   <footer>
     &copy; 2026 LSD Graphic Design
   </footer>
-  <script>
-  const sparkleContainer = document.getElementById("sparkle-bg");
 
-  for (let i = 0; i < 60; i++) {
-    const dot = document.createElement("div");
-    dot.className = "sparkle";
-    dot.style.left = Math.random() * 100 + "vw";
-    dot.style.top = Math.random() * 100 + "vh";
-    dot.style.animationDelay = Math.random() * 8 + "s";
-    dot.style.width = dot.style.height = (Math.random() * 2 + 1) + "px";
-    sparkleContainer.appendChild(dot);
-  }
-</script>
+  <script>
+    const sparkleContainer = document.getElementById("sparkle-bg");
+
+    for (let i = 0; i < 60; i++) {
+      const dot = document.createElement("div");
+      dot.className = "sparkle";
+      dot.style.left = Math.random() * 100 + "vw";
+      dot.style.top = Math.random() * 100 + "vh";
+      dot.style.animationDelay = Math.random() * 8 + "s";
+      dot.style.width = dot.style.height = (Math.random() * 2 + 1) + "px";
+      sparkleContainer.appendChild(dot);
+    }
+  </script>
 </body>
 </html>
