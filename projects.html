@@ -4,259 +4,672 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | LSD Graphic Design</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- Premium type -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+
   <style>
-    .sparkle-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  background: transparent;
-  overflow: hidden;
-}
+    :root{
+      --bg0:#07080a;
+      --bg1:#0c0f14;
+      --ink:#eef2ff;
+      --muted:rgba(238,242,255,.72);
+      --muted2:rgba(238,242,255,.52);
+      --line:rgba(238,242,255,.10);
 
-.sparkle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: #c0a063;
-  border-radius: 50%;
-  animation: sparkle-float 8s infinite;
-  opacity: 0.6;
-}
+      --accent:#9ee7ff;
+      --accent2:#b7a6ff;
+      --hot:#d6ff7a;
 
-@keyframes sparkle-float {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.9;
-    transform: translateY(-100vh) scale(1.5);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-200vh) scale(0.8);
-  }
-}
-    a {
-  position: relative;
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+      --shadow: 0 30px 90px rgba(0,0,0,.55);
+      --radius: 20px;
+      --radius2: 28px;
+      --max: 1120px;
+    }
 
-a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  height: 2px;
-  width: 0;
-  background: #c0a063;
-  transition: width 0.3s ease;
-}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(158,231,255,.14), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(183,166,255,.12), transparent 55%),
+        radial-gradient(1200px 900px at 50% 110%, rgba(214,255,122,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
 
-a:hover {
-  color: #c0a063;
-  text-shadow: 0 0 6px #c0a063, 0 0 12px #c0a063;
-}
+    .grain{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      opacity:.12;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
 
-a:hover::after {
-  width: 100%;
-}
-nav a:hover {
-  color: #c0a063;
-}
-    
-.project-tile:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 12px #c0a063;
-  transition: all 0.3s ease;
-}
-    .section {
-  border: 1px solid #c0a063;
-  box-shadow: 0 0 15px #c0a06333;
-  padding: 3rem 2rem;
-  margin-bottom: 2rem;
-  border-radius: 10px;
-}
-    @media (max-width: 600px) {
-  .logo {
-    height: 100px;
-  }
-}
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Playfair Display', serif;
-      line-height: 1.8;
-      padding: 2rem;
+    .aurora{
+      position:fixed;
+      inset:-20%;
+      z-index:0;
+      pointer-events:none;
+      filter: blur(30px);
+      opacity:.65;
     }
-    .logo-wrap {
-      text-align: center;
-      margin-bottom: 1.5rem;
+    .blob{
+      position:absolute;
+      width:520px; height:520px;
+      border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(158,231,255,.35), transparent 60%);
+      animation: floaty 16s ease-in-out infinite;
     }
-    .logo {
-      height: 230px;
-      width: auto;
-      filter: drop-shadow(0 0 8px #c0a063);
+    .blob.b2{
+      width:640px; height:640px;
+      left:60%;
+      top:10%;
+      background: radial-gradient(circle at 30% 30%, rgba(183,166,255,.32), transparent 60%);
+      animation-duration: 20s;
     }
-    nav {
-      text-align: center;
-      margin-bottom: 2rem;
+    .blob.b3{
+      width:520px; height:520px;
+      left:20%;
+      top:65%;
+      background: radial-gradient(circle at 30% 30%, rgba(214,255,122,.20), transparent 60%);
+      animation-duration: 22s;
     }
-    nav a {
-      margin: 0 1.2rem;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s ease;
+    @keyframes floaty{
+      0%{ transform: translate3d(0,0,0) scale(1); }
+      50%{ transform: translate3d(40px,-30px,0) scale(1.06); }
+      100%{ transform: translate3d(0,0,0) scale(1); }
     }
-    nav a:hover {
-      color: #c0a063;
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px clamp(16px, 4vw, 34px) 60px;
     }
-    .section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 3rem 1rem;
-      text-align: center;
+
+    /* NAV */
+    .topbar{
+      position: sticky;
+      top: 14px;
+      z-index:10;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
-    .pulse {
-      display: inline-block;
-      color: #c0a063;
-      font-size: 2.4rem;
-      font-weight: bold;
-      margin-bottom: 2rem;
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 180px;
+      text-decoration:none;
+      color: var(--ink);
     }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1.2s ease-out forwards;
+    .brand img{
+      width:34px;
+      height:34px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
     }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+    .brand .name{
+      font-weight:700;
+      letter-spacing:.02em;
+      font-size:.95rem;
+      line-height:1.1;
     }
-    .project {
-      background: linear-gradient(145deg, #0a0a0a, #111);
-      padding: 2rem;
+    .brand .tag{
+      font-size:.78rem;
+      color:var(--muted2);
+      margin-top:2px;
+    }
+
+    .nav{
+      display:flex;
+      gap: 18px;
+      align-items:center;
+      justify-content:center;
+      flex: 1;
+    }
+    .nav a{
+      position:relative;
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      font-size:.9rem;
+      letter-spacing:.02em;
+      padding: 10px 10px;
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+      white-space:nowrap;
+    }
+    .nav a:hover{
+      color: var(--ink);
+      background: rgba(255,255,255,.07);
+      transform: translateY(-1px);
+    }
+    .nav a::after{
+      content:"";
+      position:absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 7px;
+      height:1px;
+      transform: scaleX(0);
+      transform-origin:left;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transition: transform .25s ease;
+      opacity:.9;
+    }
+    .nav a:hover::after{ transform: scaleX(1); }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+      min-width: 180px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border-radius: 999px;
+      padding: 10px 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      text-decoration:none;
+      font-weight:700;
+      font-size:.88rem;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      white-space:nowrap;
+    }
+    .pill:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.09);
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      color: var(--ink);
+    }
+    .ghost{
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:none;
+    }
+    .ghost:hover{ background: rgba(255,255,255,.10); }
+
+    .cta{
+      position:relative;
+      overflow:hidden;
+      color: #071018;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: 1px solid rgba(255,255,255,.25);
+      box-shadow: 0 22px 55px rgba(158,231,255,.18);
+    }
+    .cta:hover{ box-shadow: 0 28px 70px rgba(158,231,255,.26); }
+    .cta::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35), transparent 70%);
+      transform: translateX(-110%);
+    }
+    .cta:hover::after{
+      transform: translateX(110%);
+      transition: transform .65s ease;
+    }
+
+    .menuBtn{
+      display:none;
+      border:none;
+      border-radius: 999px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.08);
+      color: var(--ink);
+      font-weight:800;
+      cursor:pointer;
+    }
+    @media (max-width: 860px){
+      .nav{ display:none; }
+      .menuBtn{ display:inline-flex; }
+      .actions{ min-width: auto; }
+      .brand{ min-width: auto; }
+    }
+
+    .mobileNav{
+      display:none;
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .mobileNav a{
+      display:block;
+      padding: 12px 12px;
       border-radius: 12px;
-      border: 1px solid #222;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
+      text-decoration:none;
+      color: var(--muted);
+      font-weight:700;
     }
-    .project:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 4px 20px rgba(192, 160, 99, 0.2);
+    .mobileNav a:hover{
+      background: rgba(255,255,255,.08);
+      color: var(--ink);
     }
-    .project img {
-      max-width: 100%;
-      height: 160px;
+    .mobileNav.show{ display:block; }
+
+    /* Cards */
+    .card{
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .pageHead{
+      margin-top: 28px;
+      padding: clamp(22px, 4vw, 42px);
+      position:relative;
+      overflow:hidden;
+    }
+    .pageHead::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 30% 30%, rgba(158,231,255,.14), transparent 60%);
+      filter: blur(10px);
+      z-index:-1;
+      opacity:.9;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight:800;
+      letter-spacing:.06em;
+      font-size:.75rem;
+      text-transform: uppercase;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent2), var(--hot));
+      box-shadow: 0 0 0 6px rgba(183,166,255,.10);
+    }
+
+    h1{
+      font-family: Fraunces, serif;
+      font-weight: 700;
+      line-height:1.05;
+      letter-spacing: -0.02em;
+      margin: 16px 0 10px;
+      font-size: clamp(2.0rem, 4vw, 3.2rem);
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 75ch;
+      font-weight:600;
+    }
+
+    /* Project grid */
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .projectCard{
+      grid-column: span 4;
+      padding: 16px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
+      position:relative;
+      overflow:hidden;
+      min-height: 250px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .projectCard::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 20% 20%, rgba(183,166,255,.12), transparent 55%);
+      opacity:.75;
+      filter: blur(10px);
+      z-index:-1;
+    }
+    .projectCard:hover{
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.07);
+      box-shadow: 0 24px 60px rgba(0,0,0,.45);
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .thumb{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.35);
+      height: 170px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      position:relative;
+    }
+    .thumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at 30% 30%, rgba(158,231,255,.10), transparent 60%);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .thumb img{
+      width: 100%;
+      height: 100%;
       object-fit: contain;
-      margin-bottom: 1rem;
+      padding: 18px;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.45));
     }
-    .project h3 {
-      color: #c0a063;
-      margin-bottom: 0.5rem;
+
+    .titleRow{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
     }
-    .project p {
-      color: #ccc;
-      font-size: 1rem;
+
+    h2{
+      margin: 0;
+      font-family: Fraunces, serif;
+      letter-spacing:-0.02em;
+      font-size: 1.35rem;
+      line-height:1.15;
     }
-    @keyframes pulse-glow {
-      0% {
-        text-shadow: 0 0 6px #c0a063;
-      }
-      50% {
-        text-shadow: 0 0 16px #c0a063, 0 0 32px #c0a063;
-      }
-      100% {
-        text-shadow: 0 0 6px #c0a063;
-      }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight:800;
+      font-size:.78rem;
+      letter-spacing:.02em;
+      white-space:nowrap;
+      height: fit-content;
     }
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .tag i{
+      width:9px;height:9px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(158,231,255,.10);
+      display:inline-block;
     }
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #aaa;
+
+    .desc{
+      margin:0;
+      color: var(--muted);
+      font-weight:600;
+    }
+
+    .cardActions{
+      margin-top:auto;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .mini{
+      padding: 9px 12px;
+      font-size:.86rem;
+    }
+
+    @media (max-width: 980px){
+      .projectCard{ grid-column: span 6; }
+    }
+    @media (max-width: 640px){
+      .projectCard{ grid-column: span 12; }
+      .actions a.ghost{ display:none; }
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 28px;
+      padding: 18px 0 6px;
+      color: var(--muted2);
+      font-weight:700;
+      font-size:.9rem;
+      text-align:center;
+    }
+
+    /* Reveal */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .blob, .cta::after{ animation:none; transition:none; }
+      .reveal{ opacity:1; transform:none; }
     }
   </style>
 </head>
-<body>
-  <div class="sparkle-bg" id="sparkle-bg"></div>
-  <div class="logo-wrap">
-    <a href="index.html">
-      <img src="logo.png" alt="LSD Graphic Design logo" class="logo" />
-    </a>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <div class="section">
-    <div class="pulse fade-in">Projects</div>
-    <div class="projects-grid fade-in">
-      <div class="project">
-        <img src="te-group.png" alt="TE Group logo" />
-        <h3>TE Group</h3>
-        <p>Modern, minimal, and built to communicate clarity for a professional agency.</p>
-      </div>
-      <div class="project">
-        <img src="urban-heights.png" alt="Urban Heights logo" />
-        <h3>Urban Heights</h3>
-        <p>Luxury real estate branding focused on elegance and upscale energy.</p>
-      </div>
-      <div class="project">
-        <img src="iron-castle.png" alt="Iron Castle logo" />
-        <h3>Iron Castle</h3>
-        <p>Strength and symmetry — this concept blends timeless structure with bold type.</p>
-      </div>
-      <div class="project">
-        <img src="eleventh-street.png" alt="Eleventh Street logo" />
-        <h3>Eleventh Street</h3>
-        <p>Edgy and urban with sharp lines made for streetwear and identity design.</p>
-      </div>
-      <div class="project">
-        <img src="litelinx.png" alt="LiteLinx logo" />
-        <h3>LiteLinx</h3>
-        <p>Futuristic and clean — a tech-driven identity for innovation and digital presence.</p>
-      </div>
-      <div class="project">
-        <img src="pdk-attorney.png" alt="PDK Attorney at Law logo" />
-        <h3>PDK Attorney at Law</h3>
-        <p>Classic serif design meets modern geometry for a sharp legal brand mark.</p>
-      </div>
-    </div>
-  </div>
-  <footer>
-    &copy; 2025 LSD Graphic Design
-  </footer>
-  <script>
-  const sparkleContainer = document.getElementById("sparkle-bg");
 
-  for (let i = 0; i < 60; i++) {
-    const dot = document.createElement("div");
-    dot.className = "sparkle";
-    dot.style.left = Math.random() * 100 + "vw";
-    dot.style.top = Math.random() * 100 + "vh";
-    dot.style.animationDelay = Math.random() * 8 + "s";
-    dot.style.width = dot.style.height = (Math.random() * 2 + 1) + "px";
-    sparkleContainer.appendChild(dot);
-  }
-</script>
+<body>
+  <div class="aurora" aria-hidden="true">
+    <div class="blob" style="left:10%; top:10%;"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="wrap">
+
+    <!-- Sticky glass nav -->
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Back to home">
+        <img src="logo.png" alt="LSD logo">
+        <div>
+          <div class="name">LSD Graphic Design</div>
+          <div class="tagline">Branding • Web • Identity</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button class="menuBtn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
+        <a class="pill ghost" href="services.html">Services</a>
+        <a class="pill cta" href="contact.html">Let’s talk</a>
+      </div>
+    </header>
+
+    <!-- Mobile menu -->
+    <div class="mobileNav" id="mobileNav" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Page header -->
+    <section class="card pageHead reveal">
+      <div class="kicker"><span class="dot"></span> Projects</div>
+      <h1>Work that looks expensive.</h1>
+      <p class="lead">
+        A few recent logos + identities. Clean systems, strong typography, and the kind of polish that makes people trust the brand instantly.
+      </p>
+    </section>
+
+    <!-- Projects -->
+    <section class="card" style="margin-top:14px; padding: 14px;">
+      <div class="grid">
+
+        <article class="projectCard reveal">
+          <div class="thumb">
+            <img src="te-group.png" alt="TE Group logo">
+          </div>
+          <div class="titleRow">
+            <h2>TE Group</h2>
+            <span class="tag"><i></i> Agency</span>
+          </div>
+          <p class="desc">Modern, minimal, and built to communicate clarity for a professional brand.</p>
+          <div class="cardActions">
+            <a class="pill ghost mini" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <article class="projectCard reveal">
+          <div class="thumb">
+            <img src="urban-heights.png" alt="Urban Heights logo">
+          </div>
+          <div class="titleRow">
+            <h2>Urban Heights</h2>
+            <span class="tag"><i></i> Real Estate</span>
+          </div>
+          <p class="desc">Luxury real estate branding focused on elegance and upscale energy.</p>
+          <div class="cardActions">
+            <a class="pill ghost mini" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <article class="projectCard reveal">
+          <div class="thumb">
+            <img src="iron-castle.png" alt="Iron Castle logo">
+          </div>
+          <div class="titleRow">
+            <h2>Iron Castle</h2>
+            <span class="tag"><i></i> Fitness</span>
+          </div>
+          <p class="desc">Strength + symmetry — timeless structure with bold, confident type.</p>
+          <div class="cardActions">
+            <a class="pill ghost mini" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <article class="projectCard reveal">
+          <div class="thumb">
+            <img src="eleventh-street.png" alt="Eleventh Street logo">
+          </div>
+          <div class="titleRow">
+            <h2>Eleventh Street</h2>
+            <span class="tag"><i></i> Streetwear</span>
+          </div>
+          <p class="desc">Edgy + urban — sharp lines made for apparel and identity design.</p>
+          <div class="cardActions">
+            <a class="pill ghost mini" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <article class="projectCard reveal">
+          <div class="thumb">
+            <img src="litelinx.png" alt="LiteLinx logo">
+          </div>
+          <div class="titleRow">
+            <h2>LiteLinx</h2>
+            <span class="tag"><i></i> Tech</span>
+          </div>
+          <p class="desc">Futuristic + clean — built for innovation and digital-first presence.</p>
+          <div class="cardActions">
+            <a class="pill ghost mini" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <article class="projectCard reveal">
+          <div class="thumb">
+            <img src="pdk-attorney.png" alt="PDK Attorney at Law logo">
+          </div>
+          <div class="titleRow">
+            <h2>PDK Attorney at Law</h2>
+            <span class="tag"><i></i> Legal</span>
+          </div>
+          <p class="desc">Classic serif meets modern geometry for a sharp legal brand mark.</p>
+          <div class="cardActions">
+            <a class="pill ghost mini" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <footer class="reveal">
+      © 2026 LSD Graphic Design • Built to look premium
+    </footer>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuBtn?.addEventListener("click", () => {
+      const isOpen = mobileNav.classList.toggle("show");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Reveal-on-scroll
+    const reveals = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries){
+        if (e.isIntersecting) e.target.classList.add("show");
+      }
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => io.observe(el));
+  </script>
 </body>
 </html>
