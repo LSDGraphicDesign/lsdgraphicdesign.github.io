@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,320 +10,794 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Premium type: clean sans + elegant serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --gold:#c0a063;
+      /* Palette (premium, calm). Change these if you want later */
+      --bg0:#07080a;
+      --bg1:#0c0f14;
+      --ink:#eef2ff;
+      --muted:rgba(238,242,255,.72);
+      --muted2:rgba(238,242,255,.52);
+      --line:rgba(238,242,255,.10);
+      --glass:rgba(255,255,255,.06);
+      --glass2:rgba(255,255,255,.09);
+
+      --accent:#9ee7ff; /* icy premium accent */
+      --accent2:#b7a6ff; /* subtle purple */
+      --hot:#d6ff7a; /* soft chartreuse for CTA edge */
+      --shadow: 0 30px 90px rgba(0,0,0,.55);
+      --radius: 20px;
+      --radius2: 28px;
+
+      --max: 1120px;
     }
 
-    /* Base */
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
-      background: radial-gradient(circle at top, #0a0a0a 0%, #000 60%);
-      color:#fff;
-      font-family:'Playfair Display', serif;
-      line-height:1.8;
-      padding: clamp(1rem, 3vw, 2rem);
       margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(158,231,255,.14), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(183,166,255,.12), transparent 55%),
+        radial-gradient(1200px 900px at 50% 110%, rgba(214,255,122,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
     }
 
-    /* Sparkle background */
-    .sparkle-bg{
+    /* subtle grain overlay (luxury texture) */
+    .grain{
       position:fixed;
       inset:0;
       pointer-events:none;
       z-index:0;
-      background:transparent;
-      overflow:hidden;
+      opacity:.12;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
     }
 
-    .sparkle{
+    /* animated “aurora” blobs */
+    .aurora{
+      position:fixed;
+      inset:-20%;
+      z-index:0;
+      pointer-events:none;
+      filter: blur(30px);
+      opacity:.65;
+    }
+    .blob{
       position:absolute;
-      width:2px;
-      height:2px;
-      background:var(--gold);
-      border-radius:50%;
-      animation:sparkle-float 8s infinite;
-      opacity:0.6;
+      width:520px; height:520px;
+      border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(158,231,255,.35), transparent 60%);
+      animation: floaty 16s ease-in-out infinite;
+    }
+    .blob.b2{
+      width:640px; height:640px;
+      left:60%;
+      top:10%;
+      background: radial-gradient(circle at 30% 30%, rgba(183,166,255,.32), transparent 60%);
+      animation-duration: 20s;
+    }
+    .blob.b3{
+      width:520px; height:520px;
+      left:20%;
+      top:65%;
+      background: radial-gradient(circle at 30% 30%, rgba(214,255,122,.20), transparent 60%);
+      animation-duration: 22s;
     }
 
-    @keyframes sparkle-float{
-      0%{ transform: translateY(0) scale(1); opacity:0.35; }
-      50%{ transform: translateY(-100vh) scale(1.5); opacity:0.85; }
-      100%{ transform: translateY(-200vh) scale(0.8); opacity:0; }
+    @keyframes floaty{
+      0%{ transform: translate3d(0,0,0) scale(1); }
+      50%{ transform: translate3d(40px,-30px,0) scale(1.06); }
+      100%{ transform: translate3d(0,0,0) scale(1); }
     }
 
-    /* Logo */
-    .logo-wrap{
-      text-align:center;
-      margin: 1rem 0 0.75rem;
+    /* layout shell */
+    .wrap{
       position:relative;
       z-index:1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px clamp(16px, 4vw, 34px) 60px;
     }
 
-    .logo{
-      height:230px;
-      width:auto;
-      filter: drop-shadow(0 0 5px var(--gold));
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      transform-origin: center;
-    }
+    /* NAV (sticky glass) */
+    .topbar{
+      position: sticky;
+      top: 14px;
+      z-index:10;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
 
-    @media (max-width:600px){
-      .logo{ height:100px; }
-    }
-
-    /* Nav */
-    nav{
-      text-align:center;
-      margin-bottom:2rem;
-      position:relative;
-      z-index:1;
-      font-family:'Montserrat', sans-serif;
-      transition: margin 0.3s ease;
-    }
-
-    nav a{
-      margin:0 1.2rem;
-      text-decoration:none;
-      color:#fff;
-      font-weight:600;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-      position:relative;
-    }
-
-    /* Underline hover (nav + normal links) */
-    a:not(.cta)::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-2px;
-      height:2px;
-      width:0;
-      background:var(--gold);
-      transition: width 0.3s ease;
-    }
-
-    a:not(.cta):hover{
-      color:var(--gold);
-      text-shadow: 0 0 6px var(--gold), 0 0 12px var(--gold);
-    }
-
-    a:not(.cta):hover::after{
-      width:100%;
-    }
-
-    /* Section layout */
-    .section{
-      max-width:900px;
-      margin: 0 auto 2rem;
-      padding: 3rem 2rem;
-      position:relative;
-      z-index:1;
-    }
-
-    /* Hero glass card */
-    .hero-card{
-      background: rgba(0, 0, 0, 0.55);
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-radius: 18px;
-      padding: 60px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-
-      /* softer border = more premium */
-      border: 1px solid rgba(212, 175, 55, 0.15);
-
-      transform: translateX(-20px);
-      position:relative;
     }
 
-    /* Soft glow behind the card (subtle) */
-    .hero-card::before{
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 180px;
+    }
+    .brand img{
+      width:34px;
+      height:34px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    }
+    .brand .name{
+      font-weight:700;
+      letter-spacing:.02em;
+      font-size:.95rem;
+      line-height:1.1;
+    }
+    .brand .tag{
+      font-size:.78rem;
+      color:var(--muted2);
+      margin-top:2px;
+    }
+
+    .nav{
+      display:flex;
+      gap: 18px;
+      align-items:center;
+      justify-content:center;
+      flex: 1;
+    }
+    .nav a{
+      position:relative;
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      font-size:.9rem;
+      letter-spacing:.02em;
+      padding: 10px 10px;
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+      white-space:nowrap;
+    }
+    .nav a:hover{
+      color: var(--ink);
+      background: rgba(255,255,255,.07);
+      transform: translateY(-1px);
+    }
+    .nav a::after{
       content:"";
       position:absolute;
-      inset:-40px;
-      background: radial-gradient(circle, rgba(192,160,99,0.14), transparent 60%);
-      z-index:-1;
-      filter: blur(10px);
+      left: 14px;
+      right: 14px;
+      bottom: 7px;
+      height:1px;
+      transform: scaleX(0);
+      transform-origin:left;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transition: transform .25s ease;
+      opacity:.9;
+    }
+    .nav a:hover::after{ transform: scaleX(1); }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+      min-width: 180px;
     }
 
-    /* Left alignment for hero */
-    .left-hero{
-      text-align:left;
-    }
-
-    /* Hero typography */
-    .pulse{
-      display:inline-block;
-      color:var(--gold);
-      font-size:3.2rem;
-      font-weight:700;
-      margin-bottom:0.5rem;
-    }
-
-    .subheadline{
-      font-size:1.3rem;
-      color:#aaa;
-      margin-top:-0.5rem;
-      margin-bottom:2rem;
-      font-weight:500;
-      font-style:italic;
-      max-width: 520px;
-    }
-
-    .divider{
-      height:2px;
-      width:60px;
-      margin:1.5rem 0 2rem;
-      background: linear-gradient(to right, var(--gold), #fff0, var(--gold));
-    }
-
-    /* Editorial text width */
-    .section p{
-      max-width: 520px;
-    }
-
-    /* Fade-in */
-    .fade-in{
-      opacity:0;
-      transform: translateY(20px);
-      animation: fadeInUp 1.2s ease-out forwards;
-      animation-delay: var(--d, 0s);
-    }
-
-    .delay-1{ --d:.10s; }
-    .delay-2{ --d:.20s; }
-    .delay-3{ --d:.30s; }
-    .delay-4{ --d:.40s; }
-    .delay-5{ --d:.50s; }
-
-    @keyframes fadeInUp{
-      to{ opacity:1; transform: translateY(0); }
-    }
-
-    /* CTA button */
-    .cta{
-      display:inline-block;
-      margin-top:40px;
-      padding:14px 36px;
-      border-radius:999px;
-      background: linear-gradient(135deg, #d4af37, #f5e18a);
-      color:#000;
-      font-weight:600;
-      letter-spacing:0.08em;
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border-radius: 999px;
+      padding: 10px 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
       text-decoration:none;
-      box-shadow: 0 12px 30px rgba(212,175,55,0.35);
-      transition: transform .2s ease, box-shadow .2s ease;
-      font-family:'Montserrat', sans-serif;
+      font-weight:700;
+      font-size:.88rem;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .pill:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.09);
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      color: var(--ink);
+    }
 
-      /* Premium hover sweep */
+    .cta{
       position:relative;
       overflow:hidden;
+      color: #071018;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: 1px solid rgba(255,255,255,.25);
+      box-shadow: 0 22px 55px rgba(158,231,255,.18);
     }
-
     .cta:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 20px 45px rgba(212,175,55,0.5);
+      box-shadow: 0 28px 70px rgba(158,231,255,.26);
     }
-
     .cta::after{
       content:"";
       position:absolute;
-      inset:0;
-      background: linear-gradient(
-        120deg,
-        transparent 30%,
-        rgba(255,255,255,0.35),
-        transparent 70%
-      );
-      transform: translateX(-100%);
+      inset:-2px;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35), transparent 70%);
+      transform: translateX(-110%);
     }
-
     .cta:hover::after{
-      transform: translateX(100%);
-      transition: transform 0.6s ease;
+      transform: translateX(110%);
+      transition: transform .65s ease;
     }
 
-    /* Scroll state (premium) */
-    .scrolled .logo{
-      transform: scale(0.85);
-      opacity: 0.85;
+    /* mobile nav */
+    .menuBtn{
+      display:none;
+      border:none;
+      border-radius: 999px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.08);
+      color: var(--ink);
+      font-weight:800;
+      cursor:pointer;
     }
 
-    .scrolled nav{
-      margin-bottom: 1.2rem;
+    @media (max-width: 860px){
+      .nav{ display:none; }
+      .menuBtn{ display:inline-flex; }
+      .actions{ min-width: auto; }
+      .brand{ min-width: auto; }
+    }
+
+    .mobileNav{
+      display:none;
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .mobileNav a{
+      display:block;
+      padding: 12px 12px;
+      border-radius: 12px;
+      text-decoration:none;
+      color: var(--muted);
+      font-weight:700;
+    }
+    .mobileNav a:hover{
+      background: rgba(255,255,255,.08);
+      color: var(--ink);
+    }
+    .mobileNav.show{ display:block; }
+
+    /* HERO */
+    .hero{
+      margin-top: 28px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .heroMain{
+      padding: clamp(22px, 4vw, 42px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight:800;
+      letter-spacing:.06em;
+      font-size:.75rem;
+      text-transform: uppercase;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--hot));
+      box-shadow: 0 0 0 6px rgba(158,231,255,.10);
+    }
+
+    h1{
+      font-family: Fraunces, serif;
+      font-weight: 700;
+      line-height:1.05;
+      letter-spacing: -0.02em;
+      margin: 16px 0 10px;
+      font-size: clamp(2.2rem, 4.6vw, 4rem);
+    }
+
+    .sub{
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+      max-width: 56ch;
+      margin: 0 0 18px;
+    }
+
+    .heroRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 16px;
+    }
+
+    .ghost{
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:none;
+    }
+    .ghost:hover{
+      background: rgba(255,255,255,.10);
+    }
+
+    .meta{
+      margin-top: 22px;
+      display:flex;
+      gap: 14px;
+      flex-wrap:wrap;
+      color: var(--muted2);
+      font-weight:700;
+      font-size:.9rem;
+    }
+    .meta span{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.12);
+    }
+    .chip{
+      width:8px;height:8px;border-radius:999px;
+      background: rgba(158,231,255,.65);
+      box-shadow: 0 0 0 6px rgba(158,231,255,.10);
+    }
+
+    /* right side showcase */
+    .heroSide{
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+    .mini{
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .mini h3{
+      margin:0 0 8px;
+      font-size: 1rem;
+      letter-spacing:.01em;
+    }
+    .mini p{
+      margin:0;
+      color: var(--muted2);
+      font-weight:600;
+      font-size:.92rem;
+    }
+
+    .statGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .stat{
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .stat strong{
+      display:block;
+      font-size: 1.35rem;
+      letter-spacing:-0.02em;
+    }
+    .stat span{
+      display:block;
+      margin-top: 6px;
+      color: var(--muted2);
+      font-weight:700;
+      font-size:.85rem;
+    }
+
+    /* Sections */
+    .section{
+      margin-top: 22px;
+      padding: 26px;
+    }
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 18px;
+      flex-wrap:wrap;
+      margin-bottom: 16px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-family: Fraunces, serif;
+      letter-spacing:-0.02em;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    }
+    .sectionHead p{
+      margin:0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-weight:600;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 980px){
+      .grid3{ grid-template-columns: 1fr; }
+    }
+
+    .tile{
+      position:relative;
+      overflow:hidden;
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .tile:hover{
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.07);
+      box-shadow: 0 25px 60px rgba(0,0,0,.45);
+    }
+    .tile .label{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+      font-size:.72rem;
+      color: rgba(238,242,255,.70);
+    }
+    .tile h4{
+      margin: 10px 0 8px;
+      font-size: 1.15rem;
+      letter-spacing:-0.01em;
+    }
+    .tile p{
+      margin:0;
+      color: var(--muted2);
+      font-weight:600;
+      font-size:.95rem;
+      max-width: 52ch;
+    }
+    .tile .sheen{
+      content:"";
+      position:absolute;
+      inset:-50%;
+      background: radial-gradient(circle at 30% 30%, rgba(158,231,255,.18), transparent 55%);
+      transform: rotate(10deg);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    /* Featured projects row */
+    .projects{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 980px){
+      .projects{ grid-template-columns:1fr; }
+    }
+
+    .feature{
+      border-radius: var(--radius2);
+      padding: 22px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      position:relative;
+      overflow:hidden;
+    }
+
+    .featureTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+    }
+    .featureTop .badge{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-weight:800;
+      font-size:.75rem;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+      white-space:nowrap;
+    }
+    .feature h3{
+      margin: 14px 0 8px;
+      font-family: Fraunces, serif;
+      letter-spacing:-0.02em;
+      font-size: 1.6rem;
+    }
+    .feature p{
+      margin:0;
+      color: var(--muted);
+      font-weight:600;
+      max-width: 62ch;
+    }
+
+    .featureActions{
+      margin-top: 16px;
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
     }
 
     /* Footer */
     footer{
+      margin-top: 28px;
+      padding: 18px 0 6px;
+      color: var(--muted2);
+      font-weight:700;
+      font-size:.9rem;
       text-align:center;
-      margin-top:4rem;
-      font-size:0.9rem;
-      color:#aaa;
-      position:relative;
-      z-index:1;
-      font-family:'Montserrat', sans-serif;
+    }
+
+    /* Accessibility */
+    .sr-only{
+      position:absolute !important;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);
+      white-space:nowrap;border:0;
+    }
+
+    /* enter animations */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .blob, .cta::after{ animation:none; transition:none; }
+      .reveal{ opacity:1; transform:none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="sparkle-bg" id="sparkle-bg"></div>
-
-  <div class="logo-wrap">
-    <img src="logo.png" alt="LSD Graphic Design logo" class="logo" />
+  <div class="aurora" aria-hidden="true">
+    <div class="blob" style="left:10%; top:10%;"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
   </div>
+  <div class="grain" aria-hidden="true"></div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <div class="wrap">
 
-  <div class="section hero-card left-hero">
-    <div class="pulse fade-in delay-1">LSD Graphic Design</div>
-    <p class="subheadline fade-in delay-2">Visual identity. Built fast. Made to last.</p>
-    <div class="divider"></div>
+    <!-- Sticky glass nav -->
+    <header class="topbar">
+      <div class="brand" aria-label="Site brand">
+        <!-- uses your existing logo.png; it’s now a mark, not a giant headline -->
+        <img src="logo.png" alt="LSD logo">
+        <div>
+          <div class="name">LSD Graphic Design</div>
+          <div class="tag">Branding • Web • Identity</div>
+        </div>
+      </div>
 
-    <p class="fade-in delay-3">
-      I’m Logan, a visual branding specialist creating logos and identities that stand out — clean, sharp, and memorable.
-      Whether you need a startup identity or a rebrand, this is the place to bring your vision to life.
-    </p>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-    <p class="fade-in delay-4">
-      Explore the sections above to learn more about what I do, see my past work, or get in touch.
-    </p>
+      <div class="actions">
+        <button class="menuBtn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
+        <a class="pill ghost" href="projects.html">View work</a>
+        <a class="pill cta" href="contact.html">Let’s talk</a>
+      </div>
+    </header>
 
-    <a href="projects.html" class="cta fade-in delay-5">View My Work</a>
+    <!-- Mobile menu -->
+    <div class="mobileNav" id="mobileNav" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="card heroMain reveal">
+        <div class="kicker"><span class="dot"></span> Available for projects</div>
+
+        <h1>Premium brands & websites that feel expensive.</h1>
+
+        <p class="sub">
+          I design clean identities and modern websites with real hierarchy, tasteful motion, and a finish that doesn’t feel templated.
+        </p>
+
+        <div class="heroRow">
+          <a class="pill cta" href="projects.html">See my work</a>
+          <a class="pill ghost" href="services.html">Services & pricing</a>
+        </div>
+
+        <div class="meta">
+          <span><span class="chip"></span> Fast turnaround</span>
+          <span><span class="chip"></span> Clean typography</span>
+          <span><span class="chip"></span> Modern UI polish</span>
+        </div>
+      </div>
+
+      <aside class="card heroSide reveal">
+        <div class="mini">
+          <h3>What I do</h3>
+          <p>Brand identity, logo systems, web design, and landing pages that convert.</p>
+        </div>
+
+        <div class="statGrid">
+          <div class="stat">
+            <strong>Studio-grade</strong>
+            <span>finish + detail</span>
+          </div>
+          <div class="stat">
+            <strong>Responsive</strong>
+            <span>mobile-first</span>
+          </div>
+        </div>
+
+        <div class="mini">
+          <h3>Best starting point</h3>
+          <p>Need a clean refresh? Start with a one-page landing + brand polish.</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Offer / Value props -->
+    <section class="card section reveal">
+      <div class="sectionHead">
+        <div>
+          <h2>Designed to feel premium.</h2>
+          <p>Not loud. Not gimmicky. Just confident, intentional design that looks expensive and reads clearly.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="tile">
+          <div class="sheen" aria-hidden="true"></div>
+          <div class="label"><span class="dot"></span> Identity</div>
+          <h4>Brand systems that scale</h4>
+          <p>Logo + type + color + rules, built to look consistent everywhere.</p>
+        </div>
+
+        <div class="tile">
+          <div class="sheen" aria-hidden="true"></div>
+          <div class="label"><span class="dot"></span> Web</div>
+          <h4>Landing pages that convert</h4>
+          <p>Clean layouts, strong hierarchy, and interaction that feels engineered.</p>
+        </div>
+
+        <div class="tile">
+          <div class="sheen" aria-hidden="true"></div>
+          <div class="label"><span class="dot"></span> Polish</div>
+          <h4>Micro-details matter</h4>
+          <p>Spacing, motion, hover states, and rhythm that make it feel expensive.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured -->
+    <section class="projects">
+      <div class="feature reveal">
+        <div class="featureTop">
+          <div class="badge"><span class="dot"></span> Featured work</div>
+          <a class="pill ghost" href="projects.html">Open projects</a>
+        </div>
+        <h3>Case-study style projects</h3>
+        <p>Show the work like a studio: big visuals, short copy, and outcomes. If your current Projects page is a list, we can upgrade it next.</p>
+
+        <div class="featureActions">
+          <a class="pill cta" href="projects.html">View portfolio</a>
+          <a class="pill ghost" href="contact.html">Book a project</a>
+        </div>
+      </div>
+
+      <div class="feature reveal">
+        <div class="featureTop">
+          <div class="badge"><span class="dot"></span> Quick contact</div>
+        </div>
+        <h3>Let’s build something clean.</h3>
+        <p>If you’ve got a logo/brand that feels “almost there,” I can make it feel finished.</p>
+
+        <div class="featureActions">
+          <a class="pill cta" href="contact.html">Contact</a>
+          <a class="pill ghost" href="services.html">See services</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      © 2026 LSD Graphic Design • Built with clean code + obsession over details
+    </footer>
   </div>
-
-  <footer>
-    &copy; 2026 LSD Graphic Design
-  </footer>
 
   <script>
-    // Sparkles (slightly reduced for a more premium, less busy feel)
-    const sparkleContainer = document.getElementById("sparkle-bg");
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
 
-    for (let i = 0; i < 45; i++) {
-      const dot = document.createElement("div");
-      dot.className = "sparkle";
-      dot.style.left = Math.random() * 100 + "vw";
-      dot.style.top = Math.random() * 100 + "vh";
-      dot.style.animationDelay = Math.random() * 8 + "s";
-      dot.style.width = dot.style.height = (Math.random() * 2 + 1) + "px";
-      sparkleContainer.appendChild(dot);
-    }
-
-    // Premium scroll reaction
-    const body = document.body;
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 40) body.classList.add("scrolled");
-      else body.classList.remove("scrolled");
+    menuBtn?.addEventListener("click", () => {
+      const isOpen = mobileNav.classList.toggle("show");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
     });
+
+    // Reveal-on-scroll
+    const reveals = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries){
+        if (e.isIntersecting) e.target.classList.add("show");
+      }
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => io.observe(el));
   </script>
 </body>
 </html>
