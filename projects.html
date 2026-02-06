@@ -142,7 +142,7 @@
       font-size:.95rem;
       line-height:1.1;
     }
-    .brand .tag{
+    .brand .tagline{
       font-size:.78rem;
       color:var(--muted2);
       margin-top:2px;
@@ -348,6 +348,222 @@
       font-weight:600;
     }
 
+    /* FEATURED */
+    .featuredGrid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .featured{
+      grid-column: span 12;
+      padding: 16px;
+      position:relative;
+      overflow:hidden;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(800px 300px at 20% 0%, rgba(158,231,255,.12), transparent 60%),
+        radial-gradient(800px 400px at 80% 20%, rgba(183,166,255,.10), transparent 60%),
+        rgba(255,255,255,.05);
+    }
+    .featuredInner{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      align-items:stretch;
+    }
+    .heroShot{
+      grid-column: span 5;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+      overflow:hidden;
+      min-height: 260px;
+      position:relative;
+      box-shadow: 0 24px 70px rgba(0,0,0,.45);
+    }
+    .heroShot::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at 30% 30%, rgba(158,231,255,.10), transparent 60%);
+      pointer-events:none;
+    }
+    .heroShot img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.03);
+      transform: scale(1.02);
+    }
+    .heroCopy{
+      grid-column: span 7;
+      padding: 8px 6px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .bigTitle{
+      font-family: Fraunces, serif;
+      letter-spacing:-0.02em;
+      margin:0;
+      font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+      line-height:1.1;
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      font-weight:650;
+      max-width: 70ch;
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 4px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight:800;
+      font-size:.82rem;
+      letter-spacing:.02em;
+      white-space:nowrap;
+    }
+    .chip b{
+      color: var(--ink);
+      font-weight:900;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .miniCard{
+      grid-column: span 6;
+      padding: 16px;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      position:relative;
+      overflow:hidden;
+    }
+    .miniCard::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 20% 20%, rgba(214,255,122,.10), transparent 55%);
+      opacity:.8;
+      filter: blur(10px);
+      z-index:-1;
+    }
+    .miniHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 6px;
+    }
+    .miniHead h3{
+      margin:0;
+      font-family: Fraunces, serif;
+      letter-spacing:-0.02em;
+      font-size: 1.25rem;
+      line-height:1.1;
+    }
+    .miniLead{
+      margin:0;
+      color: var(--muted);
+      font-weight:650;
+      max-width: 70ch;
+    }
+    .bullets{
+      margin: 12px 0 0;
+      padding: 0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+      color: var(--muted);
+      font-weight:650;
+    }
+    .bullets li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .check{
+      width:18px;height:18px;border-radius:6px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(158,231,255,.10);
+      flex: 0 0 auto;
+      margin-top: 2px;
+      position:relative;
+    }
+    .check::after{
+      content:"";
+      position:absolute;
+      left:5px; top:4px;
+      width:7px; height:4px;
+      border-left:2px solid rgba(7,16,24,.9);
+      border-bottom:2px solid rgba(7,16,24,.9);
+      transform: rotate(-45deg);
+    }
+
+    /* FILTERS */
+    .toolsRow{
+      margin-top: 14px;
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .filters{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .filterBtn{
+      border:none;
+      cursor:pointer;
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color: var(--muted);
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      transition: transform .15s ease, background .15s ease, color .15s ease, box-shadow .15s ease;
+    }
+    .filterBtn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.09);
+      color: var(--ink);
+      box-shadow: 0 18px 45px rgba(0,0,0,.25);
+    }
+    .filterBtn.active{
+      color: #071018;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .note{
+      color: var(--muted2);
+      font-weight:750;
+      font-size:.92rem;
+    }
+
     /* Project grid */
     .grid{
       margin-top: 14px;
@@ -365,7 +581,7 @@
       transition: transform .2s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
       position:relative;
       overflow:hidden;
-      min-height: 250px;
+      min-height: 270px;
       display:flex;
       flex-direction:column;
       gap:12px;
@@ -437,7 +653,7 @@
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
       color: var(--muted);
-      font-weight:800;
+      font-weight:900;
       font-size:.78rem;
       letter-spacing:.02em;
       white-space:nowrap;
@@ -453,7 +669,24 @@
     .desc{
       margin:0;
       color: var(--muted);
-      font-weight:600;
+      font-weight:650;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top: 2px;
+    }
+    .meta span{
+      font-size:.82rem;
+      color: var(--muted2);
+      font-weight:850;
+      letter-spacing:.02em;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      padding: 8px 10px;
+      border-radius: 999px;
     }
 
     .cardActions{
@@ -467,12 +700,81 @@
       font-size:.86rem;
     }
 
+    .linkOut{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .linkOut svg{
+      width:16px;height:16px;
+      opacity:.9;
+    }
+
+    /* PROCESS */
+    .process{
+      margin-top: 14px;
+      padding: 18px;
+    }
+    .processGrid{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .step{
+      grid-column: span 4;
+      padding: 16px;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      position:relative;
+      overflow:hidden;
+    }
+    .step::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 20% 20%, rgba(158,231,255,.10), transparent 55%);
+      opacity:.8;
+      filter: blur(10px);
+      z-index:-1;
+    }
+    .stepNum{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;height:34px;
+      border-radius: 12px;
+      color:#071018;
+      font-weight:1000;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      margin-bottom: 10px;
+    }
+    .step h4{
+      margin:0 0 6px;
+      font-family: Fraunces, serif;
+      letter-spacing:-0.02em;
+      font-size: 1.15rem;
+      line-height:1.15;
+    }
+    .step p{
+      margin:0;
+      color: var(--muted);
+      font-weight:650;
+    }
+
     @media (max-width: 980px){
       .projectCard{ grid-column: span 6; }
+      .heroShot{ grid-column: span 12; min-height: 220px; }
+      .heroCopy{ grid-column: span 12; }
+      .miniCard{ grid-column: span 12; }
+      .step{ grid-column: span 6; }
     }
     @media (max-width: 640px){
       .projectCard{ grid-column: span 12; }
       .actions a.ghost{ display:none; }
+      .step{ grid-column: span 12; }
     }
 
     /* Footer */
@@ -495,6 +797,10 @@
       opacity:1;
       transform: translateY(0);
     }
+
+    /* Hide cards when filtered */
+    .hidden{ display:none !important; }
+
     @media (prefers-reduced-motion: reduce){
       .blob, .cta::after{ animation:none; transition:none; }
       .reveal{ opacity:1; transform:none; }
@@ -549,17 +855,145 @@
     <!-- Page header -->
     <section class="card pageHead reveal">
       <div class="kicker"><span class="dot"></span> Projects</div>
-      <h1>Work that looks expensive.</h1>
+      <h1>Work that makes people trust you instantly.</h1>
       <p class="lead">
-        A few recent logos + identities. Clean systems, strong typography, and the kind of polish that makes people trust the brand instantly.
+        Logos are cool. But clean systems + real-world execution is what sells. Here’s a mix of branding and websites I’ve designed (including the site you’re on right now).
       </p>
+
+      <div class="toolsRow">
+        <div class="filters" aria-label="Project filters">
+          <button class="filterBtn active" data-filter="all" type="button">All</button>
+          <button class="filterBtn" data-filter="web" type="button">Websites</button>
+          <button class="filterBtn" data-filter="brand" type="button">Branding</button>
+          <button class="filterBtn" data-filter="identity" type="button">Identity</button>
+        </div>
+        <div class="note">Tap a filter • Click “View live” to see it in action</div>
+      </div>
     </section>
 
-    <!-- Projects -->
+    <!-- FEATURED WORK -->
+    <section class="card" style="margin-top:14px; padding: 14px;">
+      <div class="featuredGrid">
+        <article class="featured reveal">
+          <div class="featuredInner">
+            <div class="heroShot">
+              <!-- Replace this image if you have a screenshot. If not, it still looks good. -->
+              <img src="projects-hero.jpg" alt="Featured project preview (optional screenshot)">
+            </div>
+
+            <div class="heroCopy">
+              <div class="kicker"><span class="dot"></span> Featured work</div>
+              <h2 class="bigTitle">Web + branding that looks premium, loads fast, and actually converts.</h2>
+              <p class="sub">
+                I focus on clarity, hierarchy, and polish. The goal is simple: make the audience feel like your brand is the obvious choice.
+              </p>
+
+              <div class="chips">
+                <span class="chip"><b>Design</b> systems</span>
+                <span class="chip"><b>Clean</b> typography</span>
+                <span class="chip"><b>Modern</b> layout</span>
+                <span class="chip"><b>Fast</b> builds</span>
+              </div>
+
+              <div class="cardActions" style="margin-top:10px;">
+                <a class="pill cta mini" href="contact.html">Start a project</a>
+                <a class="pill ghost mini" href="services.html">See services</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="split">
+            <div class="miniCard reveal">
+              <div class="miniHead">
+                <h3>LSD Graphic Design (this site)</h3>
+                <span class="tag"><i></i> Website</span>
+              </div>
+              <p class="miniLead">
+                Designed and built from scratch with a premium glass + aurora style, fast navigation, and high-end visual hierarchy.
+              </p>
+              <ul class="bullets">
+                <li><span class="check"></span><span><b>Role:</b> design, layout, UI polish, build + implementation</span></li>
+                <li><span class="check"></span><span><b>Focus:</b> “looks expensive” aesthetic + clean conversion path</span></li>
+                <li><span class="check"></span><span><b>Deliverables:</b> multi-page site + consistent brand system</span></li>
+              </ul>
+              <div class="cardActions">
+                <a class="pill ghost mini linkOut" href="index.html">
+                  View live
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 14L19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 14v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </a>
+                <a class="pill ghost mini" href="contact.html">Request similar</a>
+              </div>
+            </div>
+
+            <div class="miniCard reveal">
+              <div class="miniHead">
+                <h3>Pilgrim Christian Church</h3>
+                <span class="tag"><i></i> Website</span>
+              </div>
+              <p class="miniLead">
+                Full website build + ongoing updates for a nonprofit. Clear navigation, modern layout, and easy access to ministries and community programs.
+              </p>
+              <ul class="bullets">
+                <li><span class="check"></span><span><b>Role:</b> design, build, updates, structure + content layout</span></li>
+                <li><span class="check"></span><span><b>Focus:</b> clarity, credibility, and better engagement with programs</span></li>
+                <li><span class="check"></span><span><b>Deliverables:</b> homepage, ministries, contact, multiple program pages</span></li>
+              </ul>
+              <div class="cardActions">
+                <a class="pill ghost mini linkOut" href="https://pcc-chardon.org" target="_blank" rel="noopener">
+                  View live
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 14L19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 14v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </a>
+                <a class="pill ghost mini" href="contact.html">Request similar</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECT CARDS -->
     <section class="card" style="margin-top:14px; padding: 14px;">
       <div class="grid">
 
-        <article class="projectCard reveal">
+        <!-- WEB (optional additional) -->
+        <article class="projectCard reveal" data-type="web">
+          <div class="thumb">
+            <img src="logo.png" alt="LSD Graphic Design logo">
+          </div>
+          <div class="titleRow">
+            <h2>LSD Graphic Design</h2>
+            <span class="tag"><i></i> Website</span>
+          </div>
+          <p class="desc">This portfolio site — designed + built to feel premium and guide viewers to contact.</p>
+          <div class="meta">
+            <span>UI / Layout</span><span>Brand System</span><span>Build</span>
+          </div>
+          <div class="cardActions">
+            <a class="pill ghost mini" href="index.html">View live</a>
+            <a class="pill ghost mini" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <article class="projectCard reveal" data-type="web">
+          <div class="thumb">
+            <img src="pcc-preview.png" alt="Pilgrim Christian Church website preview">
+          </div>
+          <div class="titleRow">
+            <h2>Pilgrim Christian Church</h2>
+            <span class="tag"><i></i> Website</span>
+          </div>
+          <p class="desc">Nonprofit website build + updates. Clear nav, modern layout, and community programs up front.</p>
+          <div class="meta">
+            <span>Multi-page</span><span>Content Layout</span><span>Ongoing Updates</span>
+          </div>
+          <div class="cardActions">
+            <a class="pill ghost mini" href="https://pcc-chardon.org" target="_blank" rel="noopener">View live</a>
+            <a class="pill ghost mini" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <!-- BRAND / IDENTITY -->
+        <article class="projectCard reveal" data-type="brand identity">
           <div class="thumb">
             <img src="te-group.png" alt="TE Group logo">
           </div>
@@ -567,13 +1001,16 @@
             <h2>TE Group</h2>
             <span class="tag"><i></i> Agency</span>
           </div>
-          <p class="desc">Modern, minimal, and built to communicate clarity for a professional brand.</p>
+          <p class="desc">Modern, minimal identity built to communicate clarity and professionalism.</p>
+          <div class="meta">
+            <span>Logo</span><span>Type</span><span>Brand Mark</span>
+          </div>
           <div class="cardActions">
             <a class="pill ghost mini" href="contact.html">Request similar</a>
           </div>
         </article>
 
-        <article class="projectCard reveal">
+        <article class="projectCard reveal" data-type="brand identity">
           <div class="thumb">
             <img src="urban-heights.png" alt="Urban Heights logo">
           </div>
@@ -581,13 +1018,16 @@
             <h2>Urban Heights</h2>
             <span class="tag"><i></i> Real Estate</span>
           </div>
-          <p class="desc">Luxury real estate branding focused on elegance and upscale energy.</p>
+          <p class="desc">Luxury real estate branding focused on elegance, confidence, and upscale energy.</p>
+          <div class="meta">
+            <span>Branding</span><span>Identity</span><span>Logo</span>
+          </div>
           <div class="cardActions">
             <a class="pill ghost mini" href="contact.html">Request similar</a>
           </div>
         </article>
 
-        <article class="projectCard reveal">
+        <article class="projectCard reveal" data-type="brand identity">
           <div class="thumb">
             <img src="iron-castle.png" alt="Iron Castle logo">
           </div>
@@ -595,13 +1035,16 @@
             <h2>Iron Castle</h2>
             <span class="tag"><i></i> Fitness</span>
           </div>
-          <p class="desc">Strength + symmetry — timeless structure with bold, confident type.</p>
+          <p class="desc">Strength + symmetry — timeless structure with bold, confident typography.</p>
+          <div class="meta">
+            <span>Logo</span><span>Icon</span><span>Type</span>
+          </div>
           <div class="cardActions">
             <a class="pill ghost mini" href="contact.html">Request similar</a>
           </div>
         </article>
 
-        <article class="projectCard reveal">
+        <article class="projectCard reveal" data-type="brand identity">
           <div class="thumb">
             <img src="eleventh-street.png" alt="Eleventh Street logo">
           </div>
@@ -609,13 +1052,16 @@
             <h2>Eleventh Street</h2>
             <span class="tag"><i></i> Streetwear</span>
           </div>
-          <p class="desc">Edgy + urban — sharp lines made for apparel and identity design.</p>
+          <p class="desc">Edgy + urban identity designed for apparel and digital-first brand presence.</p>
+          <div class="meta">
+            <span>Logo</span><span>Identity</span><span>Merch-ready</span>
+          </div>
           <div class="cardActions">
             <a class="pill ghost mini" href="contact.html">Request similar</a>
           </div>
         </article>
 
-        <article class="projectCard reveal">
+        <article class="projectCard reveal" data-type="brand identity">
           <div class="thumb">
             <img src="litelinx.png" alt="LiteLinx logo">
           </div>
@@ -623,13 +1069,16 @@
             <h2>LiteLinx</h2>
             <span class="tag"><i></i> Tech</span>
           </div>
-          <p class="desc">Futuristic + clean — built for innovation and digital-first presence.</p>
+          <p class="desc">Futuristic + clean — built for innovation, clarity, and modern product vibes.</p>
+          <div class="meta">
+            <span>Logo</span><span>Tech</span><span>Clean UI fit</span>
+          </div>
           <div class="cardActions">
             <a class="pill ghost mini" href="contact.html">Request similar</a>
           </div>
         </article>
 
-        <article class="projectCard reveal">
+        <article class="projectCard reveal" data-type="brand identity">
           <div class="thumb">
             <img src="pdk-attorney.png" alt="PDK Attorney at Law logo">
           </div>
@@ -637,12 +1086,49 @@
             <h2>PDK Attorney at Law</h2>
             <span class="tag"><i></i> Legal</span>
           </div>
-          <p class="desc">Classic serif meets modern geometry for a sharp legal brand mark.</p>
+          <p class="desc">Classic serif meets modern geometry for a sharp, trustworthy legal mark.</p>
+          <div class="meta">
+            <span>Logo</span><span>Legal</span><span>Identity</span>
+          </div>
           <div class="cardActions">
             <a class="pill ghost mini" href="contact.html">Request similar</a>
           </div>
         </article>
 
+      </div>
+    </section>
+
+    <!-- PROCESS / CREDIBILITY -->
+    <section class="card process reveal">
+      <div class="kicker"><span class="dot"></span> How I work</div>
+      <h2 style="margin:12px 0 6px;">The process that keeps projects looking expensive.</h2>
+      <p class="lead" style="max-width: 78ch;">
+        No random Canva chaos. I build systems that stay consistent across every touchpoint — so the brand looks legit everywhere.
+      </p>
+
+      <div class="processGrid">
+        <div class="step reveal">
+          <div class="stepNum">1</div>
+          <h4>Clarity first</h4>
+          <p>We lock the goal, the audience, and what the brand needs to communicate in 5 seconds.</p>
+        </div>
+
+        <div class="step reveal">
+          <div class="stepNum">2</div>
+          <h4>Design a system</h4>
+          <p>Typography, spacing, visual hierarchy, and a look that stays consistent across everything.</p>
+        </div>
+
+        <div class="step reveal">
+          <div class="stepNum">3</div>
+          <h4>Polish + deliver</h4>
+          <p>Export-ready assets, clean files, and edits that make the final product feel premium.</p>
+        </div>
+      </div>
+
+      <div class="cardActions" style="margin-top:14px;">
+        <a class="pill cta mini" href="contact.html">Let’s build something</a>
+        <a class="pill ghost mini" href="services.html">See what I offer</a>
       </div>
     </section>
 
@@ -670,6 +1156,34 @@
     }, { threshold: 0.12 });
 
     reveals.forEach(el => io.observe(el));
+
+    // Filters
+    const filterBtns = document.querySelectorAll(".filterBtn");
+    const cards = document.querySelectorAll(".projectCard");
+
+    function setFilter(key){
+      filterBtns.forEach(b => b.classList.toggle("active", b.dataset.filter === key));
+
+      cards.forEach(card => {
+        const type = (card.getAttribute("data-type") || "").toLowerCase();
+        if (key === "all") {
+          card.classList.remove("hidden");
+          return;
+        }
+        // key maps: web / brand / identity
+        if (key === "web") {
+          card.classList.toggle("hidden", !type.includes("web"));
+        } else if (key === "brand") {
+          card.classList.toggle("hidden", !(type.includes("brand")));
+        } else if (key === "identity") {
+          card.classList.toggle("hidden", !(type.includes("identity")));
+        }
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => setFilter(btn.dataset.filter));
+    });
   </script>
 </body>
 </html>
